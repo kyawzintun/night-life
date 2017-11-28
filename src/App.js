@@ -60,6 +60,8 @@ class App extends Component {
         console.log(res, "restaurants");
         _this.setState({ data: res.data, loading: false, isSearching: false });
       }).catch(err => {
+        toast.error(err.response.data);
+        _this.setState({ isSearching: false });
         console.log(err.response);
       });
   }
@@ -144,7 +146,7 @@ class App extends Component {
           </li>
         );
       } else {
-        content = <p>There is no bars for this keywords.</p>
+        content = <p>Location not found.</p>
       }
     }
     return (
